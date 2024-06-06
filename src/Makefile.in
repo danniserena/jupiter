@@ -15,10 +15,17 @@ bindir = @bindir@
 srcdir = @srcdir@
 VPATH = @srcdir@
 
+# Tool-related substitution variables
+CC = @CC@
+DEFS = @DEFS@
+LIBS = @LIBS@
+CFLAGS = @CFLAGS@
+CPPFLAGS = @CPPFLAGS@
+
 all: jupiter
 
 jupiter: main.c
-	gcc -g -O0 -o $@ main.c
+	$(CC) $(CFLAGS) $(DEFS) $(CPPFLAGS) -I. -I$(srcdir) -I.. -o $@ $^ $(LIBS)
 
 check: all
 	./jupiter | grep "Hello from .*jupiter!"
