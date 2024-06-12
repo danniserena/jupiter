@@ -9,9 +9,11 @@ AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CC
-_DEBUG_START_
+AM_PROG_CC_C_O
+AC_PROG_RANLIB
+# _DEBUG_START_
 AC_CHECK_PROG([make_var], [make], [yes], [no],,[/etc/alternatives/make])
-_DEBUG_END_
+# _DEBUG_END_
 AC_PROG_INSTALL
 
 # Checks for libraries.
@@ -36,5 +38,7 @@ fi
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
-                 src/Makefile])
+                 common/Makefile
+                 src/Makefile
+                 ])
 AC_OUTPUT
