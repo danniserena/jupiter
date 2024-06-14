@@ -9,7 +9,7 @@ jupiter_SOURCES = main.c
 # 	chmod +x greptest.sj
 #
 
-jupiter_CPPFLAGS = -I$(top_srcdir)/common
-jupiter_LDADD = ../common/libjupcommon.a
+jupiter_CPPFLAGS = -I$(top_srcdir)/include
+jupiter_LDADD = ../libjup/libjupiter.la
 
 CLEANFILES = greptest.sh
