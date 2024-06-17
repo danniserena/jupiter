@@ -23,7 +23,7 @@ have_pthreads=no
 AC_SEARCH_LIBS([pthread_create], [pthread], [have_pthreads=yes])
 
 # Checks for header files.
-AC_CHECK_HEADERS([stdlib.h pthread.h])
+AC_CHECK_HEADERS([stdlib.h pthread.h dlfcn.h])
 if test "x${have_pthreads}" = xyes; then
  AC_CHECK_HEADERS([pthread.h], [], [have_pthreads=no])
 fi
@@ -38,11 +38,22 @@ fi
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
+AC_SEARCH_LIBS([dlopen], [dl])
+
 # The sequence is important
 AC_CONFIG_FILES([Makefile
                  common/Makefile
                  include/Makefile
                  libjup/Makefile
                  src/Makefile
+                 src/modules/hithere/Makefile
                  ])
 AC_OUTPUT
+echo \
+" ---------------------------------------------------
+${PACKAGE_NAME} Version ${PACKAGE_VERSION}
+
+Prefix: '${prefix}'
+Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
+Libraries: '${LIBS}'
+"
