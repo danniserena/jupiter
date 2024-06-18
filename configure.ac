@@ -23,7 +23,7 @@ have_pthreads=no
 AC_SEARCH_LIBS([pthread_create], [pthread], [have_pthreads=yes])
 
 # Checks for header files.
-AC_CHECK_HEADERS([stdlib.h pthread.h dlfcn.h])
+AC_CHECK_HEADERS([stdlib.h pthread.h ltdl.h])
 if test "x${have_pthreads}" = xyes; then
  AC_CHECK_HEADERS([pthread.h], [], [have_pthreads=no])
 fi
@@ -38,7 +38,7 @@ fi
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
-AC_SEARCH_LIBS([dlopen], [dl])
+AC_SEARCH_LIBS([lt_dlopen], [ltdl])
 
 # The sequence is important
 AC_CONFIG_FILES([Makefile

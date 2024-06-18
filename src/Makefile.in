@@ -50,7 +50,8 @@ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(Checkdir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_jupiter_OBJECTS = jupiter-main.$(OBJEXT)
 jupiter_OBJECTS = $(am_jupiter_OBJECTS)
-jupiter_DEPENDENCIES = ../libjup/libjupiter.la
+jupiter_DEPENDENCIES = ../libjup/libjupiter.la \
+	modules/hithere/hithere.la
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -250,7 +251,7 @@ TESTS = $(Check_SCRIPTS)
 # 定义测试目录
 Checkdir = $(abs_top_builddir)/check
 jupiter_CPPFLAGS = -I$(top_srcdir)/include
-jupiter_LDADD = ../libjup/libjupiter.la
+jupiter_LDADD = ../libjup/libjupiter.la -dlopen modules/hithere/hithere.la
 CLEANFILES = greptest.sh
 all: all-recursive
 

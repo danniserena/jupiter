@@ -14,6 +14,6 @@ greptest.sh:
 
 
 jupiter_CPPFLAGS = -I$(top_srcdir)/include
-jupiter_LDADD = ../libjup/libjupiter.la
+jupiter_LDADD = ../libjup/libjupiter.la -dlopen modules/hithere/hithere.la
 
 CLEANFILES = greptest.sh
